@@ -609,8 +609,8 @@ ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li 
         color: white;
       }*/
 #map {
-            height: 70%;
-            width: 70%;
+            height: 36em;
+            width: 100%;
         }
         /* Optional: Makes the sample page fill the window. */
         
