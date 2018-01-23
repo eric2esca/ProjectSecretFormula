@@ -593,12 +593,11 @@ ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li 
         width: 100%;
       }
 .card-title {
-        padding-left: 24px;
-        padding-top: 12px;
+        text-align: center;
       }
 
 .health-label{
-        padding-left: 24px;
+        text-align: center;
 }
 .grid {
         padding-top: 2em;

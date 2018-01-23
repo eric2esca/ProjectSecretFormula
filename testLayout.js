@@ -6,7 +6,12 @@ $("#search-box").submit(function(event) {
 	// Debugging, log what we are looking for
 	// console.log("Searching for " + searchText);
 
-	// Performing GET requests to the recipe API and logging the responses to the console    
+	// Performing GET requests to the recipe API and logging the responses to the console
+	var position = $("#recipes-section").offset().top;
+	$("HTML, BODY").animate({
+		scrollTop: position
+	},1000);
+
 	$.ajax({
 			url: "https://api.edamam.com/search?q=" + searchText + "&to=" + maxResults + "&app_id=a5adb2d9&app_key=bbbb6d6a60ed99b20528ac9c372c5a9c",
 			method: "GET"
