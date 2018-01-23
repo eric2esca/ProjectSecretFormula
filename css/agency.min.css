@@ -93,14 +93,14 @@ body{
     font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif
 }
 #mainNav .navbar-brand{
-    color:#fed136;
-    font-family:'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive
+    color:#fff;
+    font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif
 }
 #mainNav .navbar-brand.active,#mainNav .navbar-brand:active,#mainNav .navbar-brand:focus,#mainNav .navbar-brand:hover{
     color:#fec503
 }
 #mainNav .navbar-nav .nav-item .nav-link{
-    font-size:90%;
+    font-size:100%;
     font-weight:400;
     padding:.75em 0;
     letter-spacing:1px;
@@ -597,7 +597,6 @@ ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li 
       }
 
 .health-label{
-        text-align: center;
 }
 .grid {
         padding-top: 2em;
@@ -691,6 +690,18 @@ ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li 
             font-size: 25px;
             font-weight: 500;
             padding: 6px 12px;
+        }
+
+        #google-map{
+            background-image: url(../img/google-map-photo.jpeg);
+            background-repeat:no-repeat;
+        background-attachment:scroll;
+    background-position:center center;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+
         }
 
         
