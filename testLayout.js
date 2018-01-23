@@ -23,14 +23,19 @@ $("#search-box").submit(function(event) {
 				var image = $("<img>").attr("src", recipe.recipe.image);
 				image.addClass("card-img-top");
 				var cardTitle = $("<h3>").text(recipe.recipe.label).addClass("card-title");
-				var list = $("<ul>").addClass("list-group list-group-flush");
+				var listOne = $("<ul>").addClass("list-group list-group-flush");
+				var listTwo = $("<ul>").addClass("list-group list-group-flush");
+				var nutrientHead = $("<h4>").text("Health Labels").addClass("health-label");
 				recipe.recipe.ingredientLines.forEach(function(line) {
 					var il = $("<il>").text(line).addClass("list-group-item");
-					list.append(il);
+					listOne.append(il);
 				});
-				var btn = $("<a></a>").addClass("btn btn-primary").attr("href", recipe.recipe.url).attr("target", "_blank").text("Find out more");
-
-				cardDiv.append(image).append(cardTitle).append(list).append(btn);
+				recipe.recipe.healthLabels.forEach(function(line){
+					var el = $("<il>").text(line).addClass("list-group-item");
+					listTwo.append(el);
+				});
+				var btn = $("<a></a>").addClass("btn btn-primary").attr("href", recipe.recipe.url).attr("target", "_blank").text("Get the recipe");
+				cardDiv.append(image).append(cardTitle).append(listOne).append(nutrientHead).append(listTwo).append(btn);
 				columnDiv.append(cardDiv);
 				$("#recipe-here").prepend(columnDiv);
 			});
