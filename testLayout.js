@@ -1,17 +1,22 @@
+
+
+  //----------------------------------------------------------------
+  var recipes = [];
+
+var counter = 0;
+var cardDivArray = [];
+var results;
+
+
 $("#search-box").submit(function(event) {
 	// Get the search data from the form
-	var searchText = $("#search").val();
-
+	var searchText = $("#search").val().trim();
   var maxResults = 15;
+
 	// Debugging, log what we are looking for
 	// console.log("Searching for " + searchText);
 
-	// Performing GET requests to the recipe API and logging the responses to the console
-	var position = $("#recipes-section").offset().top;
-	$("HTML, BODY").animate({
-		scrollTop: position
-	},1000);
-
+	// Performing GET requests to the recipe API and logging the responses to the console    
 	$.ajax({
 			url: "https://api.edamam.com/search?q=" + searchText + "&to=" + maxResults + "&app_id=a5adb2d9&app_key=bbbb6d6a60ed99b20528ac9c372c5a9c",
 			method: "GET"
@@ -19,77 +24,63 @@ $("#search-box").submit(function(event) {
 			// console.log(response);
 
 			// Storing the data from the AJAX request in the results variable
-			var results = response.hits;
+			results = response.hits;
+			counter = 0;
+			cardDivArray = [];
 
-			results.forEach( function(recipe) {
-				console.log(recipe)
+			results.forEach( function(recipe) { 
+				// console.log(recipe)
 				var columnDiv = $("<div>").addClass("grid col-lg-4 col-md-6");
-				var cardDiv = $("<div>").addClass("card");
+				var cardDiv = $("<div>").addClass("card").attr("id",counter); //Eric added attr id counter
 				var image = $("<img>").attr("src", recipe.recipe.image);
 				image.addClass("card-img-top");
 				var cardTitle = $("<h3>").text(recipe.recipe.label).addClass("card-title");
-				var listOne = $("<ul>").addClass("list-group list-group-flush");
-				var listTwo = $("<ul>").addClass("list-group list-group-flush");
-				var nutrientHead = $("<h4>").text("Health Labels").addClass("health-label");
+				var list = $("<ul>").addClass("list-group list-group-flush");
 				recipe.recipe.ingredientLines.forEach(function(line) {
 					var il = $("<il>").text(line).addClass("list-group-item");
-					listOne.append(il);
+					list.append(il);
 				});
-				recipe.recipe.healthLabels.forEach(function(line){
-					var el = $("<il>").text(line).addClass("list-group-item");
-					listTwo.append(el);
-				});
-				var btn = $("<a></a>").addClass("btn btn-primary").attr("href", recipe.recipe.url).attr("target", "_blank").text("Get the recipe");
-				cardDiv.append(image).append(cardTitle).append(listOne).append(nutrientHead).append(listTwo).append(btn);
+				var btn = $("<a></a>").addClass("btn btn-primary").attr("href", recipe.recipe.url).attr("target", "_blank").text("Find out more");
+				var btn2 = $("<button></button>").addClass("btn btn-primary bookmark").text("bookmark").attr("id",counter);
+
+				cardDiv.append(image).append(cardTitle).append(list).append(btn).append(btn2);
 				columnDiv.append(cardDiv);
 				$("#recipe-here").prepend(columnDiv);
+				cardDivArray.push(recipe);
+				counter++;
+
+
 			});
-
-			
-
-			// for (var i = 0; i < results.length; i++) {
-
-			// 		// Creating and storing a div tag
-			// 		var recipeDiv = $("<div>");
-
-			// 		// Creating and storing an image tag
-			// 		var recipeImage = $("<img>");
-
-			// 		// Setting the src attribute of the image to a property pulled off the result item
-			// 		recipeImage.attr("src", results[i].recipe.image);
-
-			// 		// Creating and storing recipe in a paragraph
-			// 		var recipeList = $("<p>").text("Recipe: " + results[i].recipe.label);
-
-			// 		// Creating and storing nutrient list in a paragraph
-			// 		var nutrientList = $("<p>").text(results[i].recipe.healthLabels);
-
-			// 		//Prep instructions
-			// 		var prepInstructions = $("<p>").text(results[i].recipe.url);
-
-
-			// 		// Appending the paragraph and image tag to the recipeDiv
-			// 		recipeDiv.append(recipeList);
-			// 		recipeDiv.append(prepInstructions);
-			// 		recipeDiv.append(nutrientList);
-			// 		recipeDiv.append(recipeImage);
-
-			// 		// Creating element for ingredients
-			// 		var ingredientInfo = results[i].recipe.ingredientLines;
-			// 		for (var j = 0; j < ingredientInfo.length; j++) {
-			// 				recipeDiv.append($("<p>").text(ingredientInfo[j]));
-			// 		}
-
-
-
-			// 		// Prependng the recipe to the HTML page in the "#recipe-here" div
-			// 		$("#recipe-here").prepend(recipeDiv);
-			// }
-
 	});
 
 	// Prevents the page from reloading after the AJAX call.
 	event.preventDefault();
+});
+
+
+// Initialize Firebase
+//1. Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCBmdSwWMcDk9m6lolLxaLvPLXd7_k2QPY",
+    authDomain: "recipe-website-e376f.firebaseapp.com",
+    databaseURL: "https://recipe-website-e376f.firebaseio.com",
+    projectId: "recipe-website-e376f",
+    storageBucket: "",
+    messagingSenderId: "310605823696"
+  };
+
+  //firebase.initializeApp(config);
+
+  //var database = firebase.database();
+
+//click event
+$(document).on("click", ".bookmark", function(event){
+	var bookMarkID = $(this).attr("id");
+	console.log(results[bookMarkID]);
+});
+
+$(document).on('click','.bookmark',function(){
+	console.log('We made it!')
 });
 
 var map;
@@ -176,7 +167,7 @@ function createClickEvent(id, i) {
 			restaurantRating = restaurants[i].rating;
 			restaurantPrice = restaurants[i].price;
 
-			console.log(restaurantName, restaurantAddress, restaurantRating, restaurantPrice);
+			// console.log(restaurantName, restaurantAddress, restaurantRating, restaurantPrice);
 
 	});
 }
@@ -204,6 +195,6 @@ $("#createGroupBtn").on("click", function(event) {
 
 	// window.location.href = "myGroups.html";
 
-	console.log(groupName, groupDate, groupParticipants, groupTime, groupTheme);
+	// console.log(groupName, groupDate, groupParticipants, groupTime, groupTheme);
 
 });
