@@ -5,6 +5,10 @@ body {
     font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif
 }
 
+#google-map {
+    background-image: url(../img/google-map-photo.jpeg);
+}
+
 p {
     line-height: 1.75
 }
