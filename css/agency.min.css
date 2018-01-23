@@ -1,7 +1,8 @@
 /*! * Start Bootstrap - Agency v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/agency) * Copyright 2013-2017 Start Bootstrap * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE) */
 body{
     overflow-x:hidden;
-    font-family:'Roboto Slab','Helvetica Neue',Helvetica,Arial,sans-serif
+    font-family:'Roboto Slab','Helvetica Neue',Helvetica,Arial,sans-serif;
+    background-color: lightblue;
 }
 
 p{
@@ -688,3 +689,5 @@ ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li 
             font-weight: 500;
             padding: 6px 12px;
         }
+
+        

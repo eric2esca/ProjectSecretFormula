@@ -5,7 +5,9 @@
  */
 body {
   overflow-x: hidden;
-  font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: lightblue;
+   }
 
 p {
   line-height: 1.75; }
@@ -78,7 +80,8 @@ img::-moz-selection {
   background: transparent; }
 
 body {
-  -webkit-tap-highlight-color: #fed136; }
+  -webkit-tap-highlight-color: #fed136;
+  background-color: lightblue; }
 
 #mainNav {
   background-color: #212529; }
@@ -509,3 +512,7 @@ ul.social-buttons {
     background-color: #212529; }
     ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
       background-color: #fed136; }
+
+  body {
+    background-color: lightblue;
+  }
