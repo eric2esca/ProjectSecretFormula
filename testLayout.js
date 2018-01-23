@@ -1,6 +1,21 @@
+// Initialize Firebase
+// 1. Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCBmdSwWMcDk9m6lolLxaLvPLXd7_k2QPY",
+    authDomain: "recipe-website-e376f.firebaseapp.com",
+    databaseURL: "https://recipe-website-e376f.firebaseio.com",
+    projectId: "recipe-website-e376f",
+    storageBucket: "",
+    messagingSenderId: "310605823696"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+  //----------------------------------------------------------------
+  var recipes = [];
 $("#search-box").submit(function(event) {
 	// Get the search data from the form
-	var searchText = $("#search").val();
+	var searchText = $("#search").val().trim();
   var maxResults = 15;
 	// Debugging, log what we are looking for
 	// console.log("Searching for " + searchText);
@@ -14,7 +29,7 @@ $("#search-box").submit(function(event) {
 
 			// Storing the data from the AJAX request in the results variable
 			var results = response.hits;
-
+			recipes = response.hits;
 			results.forEach( function(recipe) {
 				console.log(recipe)
 				var columnDiv = $("<div>").addClass("grid col-lg-4 col-md-6");
@@ -28,10 +43,56 @@ $("#search-box").submit(function(event) {
 					list.append(il);
 				});
 				var btn = $("<a></a>").addClass("btn btn-primary").attr("href", recipe.recipe.url).attr("target", "_blank").text("more details");
+				var btn2 = $("<a></a>").addClass("btn btn-primary bookmark").text("bookmark");
 
-				cardDiv.append(image).append(cardTitle).append(list).append(btn);
+				//2. Button for adding BOOKMARK
+  				$(".bookmark").on("click", function(event)
+  				{
+  					event.preventDefault();
+
+  					//grabs api inputs
+  					var recipeImage = image;
+  					var recipeLabel = cardTitle;
+  					var recipeingredients = list;
+  					var recipeurl = btn;
+
+  					//creates a local temporary object for holding recipe data
+					var info = 
+					{
+						recipeImage: recipeImage,
+						recipeLabel: recipeLabel,
+						recipeingredients: recipeingredients,
+						recipeurl: btn
+					};
+
+					//uploads recipe data to the database
+					database.ref().push(info);
+
+					//logs everything to the console
+					console.log(info.recipeImage);
+					console.log(info.recipeLabel);
+					console.log(info.recipeingredients);
+					console.log(info.recipeurl);
+
+					//test alert to see if this is working
+					alert("firebase is alive");
+
+					//3. Create Firebase event for bookmarks
+					database.ref().on("child_added", function(childSnapshot, prevChildKey) 
+					{
+						console.log(childSnapshot.val());
+
+						//store everything into variables
+						//var  = childSnapshot.val().
+
+
+					});
+
+
+				cardDiv.append(image).append(cardTitle).append(list).append(btn).append(btn2);
 				columnDiv.append(cardDiv);
 				$("#recipe-here").prepend(columnDiv);
+				//$("#recipe-here").append('<div class="btn btn-default">Book Mark</div');
 			});
 
 			
@@ -79,6 +140,7 @@ $("#search-box").submit(function(event) {
 
 	// Prevents the page from reloading after the AJAX call.
 	event.preventDefault();
+});
 });
 
 var map;
