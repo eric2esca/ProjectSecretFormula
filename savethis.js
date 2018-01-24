@@ -37,7 +37,7 @@ $("#search-box").submit(function(event) {
 					list.append(il);
 				});
 				var btn = $("<a></a>").addClass("btn btn-primary").attr("href", recipe.recipe.url).attr("target", "_blank").text("Find out more");
-				var btn2 = $("<button></button>").addClass("btn btn-primary bookmark").text("bookmark").attr("id",counter);
+				var btn2 = $("<button></button>").addClass("btn btn-primary bookmark").text("Save for later").attr("id",counter);
 
 				cardDiv.append(image).append(cardTitle).append(list).append(btn).append(btn2);
 				columnDiv.append(cardDiv);
