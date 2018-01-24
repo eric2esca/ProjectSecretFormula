@@ -5,10 +5,10 @@ var results;
 
 
 $("#search-box").submit(function(event) {
-<<<<<<< HEAD
+
 	// Get the search data from the form
 	var searchText = $("#search").val().trim();
-  var maxResults = 15;
+    var maxResults = 15;
 
 	// Debugging, log what we are looking for
 	// console.log("Searching for " + searchText);
@@ -50,7 +50,7 @@ $("#search-box").submit(function(event) {
 
 	// Prevents the page from reloading after the AJAX call.
 	event.preventDefault();
-=======
+
     // Get the search data from the form
     var searchText = $("#search").val().trim();
     var maxResults = 15;
@@ -95,7 +95,7 @@ $("#search-box").submit(function(event) {
 
     // Prevents the page from reloading after the AJAX call.
     event.preventDefault();
->>>>>>> 26a7339833ea6d506514cdecb1faa1f49599ee45
+
 });
 
 
@@ -124,7 +124,7 @@ var fat_fire;
 var carb_fire;
 
 //click event
-<<<<<<< HEAD
+
 $(document).on("click", ".bookmark", function(event){
 	var bookMarkID = $(this).attr("id");
 
@@ -178,7 +178,7 @@ $(document).on("click", ".bookmark", function(event){
   	var btn1 = $("<a></a>").addClass("btn btn-primary").attr("href", url_fire).attr("target", "_blank").text("Find out more");
   	cardDiv1.append(image1).append(cardTitle1).append(btn1);
 		columnDiv1.append(cardDiv1);
-=======
+
 $(document).on("click", ".bookmark", function(event) {
     var bookMarkID = $(this).attr("id");
 
@@ -234,8 +234,6 @@ $(document).on("click", ".bookmark", function(event) {
     columnDiv1.append(cardDiv1);
 
     $("#bookmarksAdded").prepend(columnDiv1);
->>>>>>> 26a7339833ea6d506514cdecb1faa1f49599ee45
-
 });
 
 $(document).on('click', '.bookmark', function() {
