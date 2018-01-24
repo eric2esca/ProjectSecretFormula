@@ -117,7 +117,7 @@ $(document).on("click", ".bookmark", function(event){
   		label_fire = childSnapshot.val().title;
   		ingredients_fireArray = childSnapshot.val().ingredients;
   		url_fire = childSnapshot.val().instructions;
-  		console.log(img_fire);
+  		//console.log(img_fire);
   	});
 
   	//Append bookmarks dynamically to recipe section
