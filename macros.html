@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -31,48 +30,74 @@
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
+    <!-- quick style fix -->
+    <style type="text/css">
+        label{
+            background: black;
+            opacity: 0.7;
+            color:white;
+            font-size: 20px;
+        }
+
+        header.masthead .intro-text .intro-lead-in{
+            color: black;
+        }
+
+        header.masthead .intro-text .intro-heading {
+            color: black;
+        }
+
+        header.masthead .intro-text .intro-lead-in{
+            padding-top: 95px;
+        }
+
+        header.masthead .intro-text{
+            padding-top: 10px;
+            padding-bottom: 75px;
+        }
+
+        .card{
+            width: 1075px;
+            text-align: center;
+            background: url(img/gym2.jpg);
+            padding: auto;
+            margin: auto;
+            font-size: 25px;
+            color: yellow;
+        }
+
+        .card-title{
+            background: black;
+            opacity: 0.7;
+        }
+
+    </style>
+
   </head>
 
-  <body id="page-top">
+<body id="page-top">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Find Your Recipe</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Macro Calculator inputs</a>
+        
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav text-uppercase ml-auto">
+           
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#recipes-section">Recipes</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li> -->
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#google-map">Need Ingredients?</a>
+              <a class="nav-link js-scroll-trigger" href="#macro-section">Results</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#bookmarksAdded">Saved Recipes</a>
+              <a class="nav-link js-scroll-trigger" href="ericIndex.html">Back to Recipes</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="macros.html">Macros</a>
-            </li>
-
-            <!--
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-            </li>
-          -->
-          <!--
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
-          -->
           </ul>
         </div>
       </div>
@@ -82,41 +107,51 @@
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
-          <div class="intro-lead-in">Welcome To Our Recipe Finder!</div>
-          <div class="intro-heading text-uppercase">Bon Appétit</div>
+          <div class="intro-lead-in">Welcome To Our Macro Calculator</div>
+          <div class="intro-heading text-uppercase">Macro Finder</div>
 
     <!--search form bootstrap -->
-    <div class="container">
-        <div class="row">
-                  <form id="search-box">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" name="search" id="search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-      </div>
-        </div>
-      </div>
-    </header>
+    <form role="form">
+        <div class="form-group">
+            <label for="weight-input">Enter your weight in pounds:</label>
+            <input class="form-control" id="weight-input" type="number">
+         </div>
 
-    <!-- Recipes -->
-    <section id="recipes-section">
+         <div class="form-group">
+           <label for="metabolicRate-input">Enter your metabolic rate: slow, medium, or fast!:</label>
+           <input class="form-control" id="metabolicRate-input" type="string">
+         </div>
+
+         <div class="form-group">
+           <label for="age-input">Please enter your age group! Types 20, 30, 40, or 50!</label>
+           <input class="form-control" id="age-input" type="number">
+         </div>
+
+         <div class="form-group">
+           <label for="goal-input">Would you like to lose, maintain, or gain weight?:</label>
+           <input class="form-control" id="goal-input" type="string">
+         </div>
+
+         <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+    </form>
+
+    <!-- Macro Results -->
+    <section id="macro-section">
+     
       <div class="container">
-        <div id="recipe-here" class="row"></div>
+        <div id="macros-here" class="row"> </div>
       </div>
-       
-      </div>
+
     </section>
 
+
+
     <!-- Googlemap -->
-    <section id="google-map">
+    <!-- <section id="google-map">
     <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Missing an ingredient for your favorite recipe?</h2>
+        <h2><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Find a Gym?</h2>
       </div>
     </div>
     <div class="row">
@@ -156,20 +191,7 @@
     </div>
   </div>
   </section>
-
-  <!-- bookmarks -->
-    <section id="bookmarksAdded">
-      <div class="container">
-        <div id="#bookmarksAdded" class="row"></div>
-      </div>
-       
-      </div>
-    </section>
-
-
-    
-
-    
+ -->
 
     <!-- Footer -->
     <footer>
@@ -197,7 +219,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/agency.min.js"></script>
-    <script type="text/javascript" src="eric.js"></script>
+    <script type="text/javascript" src="macros.js"></script>
     <script type="text/javascript" src="googleAutocomplete.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAki106XKTYF8aN0LBROz8OXWG_19uN-uI&libraries=places&callback=initMap" async defer></script>
 
