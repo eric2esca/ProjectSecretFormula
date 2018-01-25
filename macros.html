@@ -1,0 +1,228 @@
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Secret Menu</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+    <!-- quick style fix -->
+    <style type="text/css">
+        label{
+            background: black;
+            opacity: 0.7;
+            color:white;
+            font-size: 20px;
+        }
+
+        header.masthead .intro-text .intro-lead-in{
+            color: black;
+        }
+
+        header.masthead .intro-text .intro-heading {
+            color: black;
+        }
+
+        header.masthead .intro-text .intro-lead-in{
+            padding-top: 95px;
+        }
+
+        header.masthead .intro-text{
+            padding-top: 10px;
+            padding-bottom: 75px;
+        }
+
+        .card{
+            width: 1075px;
+            text-align: center;
+            background: url(img/gym2.jpg);
+            padding: auto;
+            margin: auto;
+            font-size: 25px;
+            color: yellow;
+        }
+/*
+        .card-title{
+            background: black;
+            opacity: 0.7;
+        }*/
+
+    </style>
+
+  </head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Macro Calculator inputs</a>
+        
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+           
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#macro-section">Results</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="ericIndex.html">Back to Recipes</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Welcome To Our Macro Calculator</div>
+          <div class="intro-heading text-uppercase">Macro Finder</div>
+
+    <!--search form bootstrap -->
+    <form role="form">
+        <div class="form-group">
+            <label for="weight-input">Enter your weight in pounds:</label>
+            <input class="form-control" id="weight-input" type="number">
+         </div>
+
+         <div class="form-group">
+           <label for="metabolicRate-input">Enter your metabolic rate: slow, medium, or fast!:</label>
+           <input class="form-control" id="metabolicRate-input" type="string">
+         </div>
+
+         <div class="form-group">
+           <label for="age-input">Please enter your age group! Types 20, 30, 40, or 50!</label>
+           <input class="form-control" id="age-input" type="number">
+         </div>
+
+         <div class="form-group">
+           <label for="goal-input">Would you like to lose, maintain, or gain weight?:</label>
+           <input class="form-control" id="goal-input" type="string">
+         </div>
+
+         <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+    </form>
+
+    <!-- Macro Results -->
+    <section id="macro-section">
+     
+      <div class="container">
+        <div id="macros-here" class="row"> </div>
+      </div>
+
+    </section>
+
+
+
+    <!-- Googlemap -->
+    <!-- <section id="google-map">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Find a Gym?</h2>
+      </div>
+    </div>
+    <div class="row">
+    <div class="pac-card" id="pac-card">
+        <div>
+            <div id="title">
+                Find your nearest grocer!
+            </div>
+            <div id="type-selector" class="pac-controls">
+                <input type="radio" name="type" id="changetype-all" checked="checked">
+                <label for="changetype-all">All</label>
+
+                <input type="radio" name="type" id="changetype-establishment">
+                <label for="changetype-establishment">Establishments</label>
+
+                <input type="radio" name="type" id="changetype-address">
+                <label for="changetype-address">Addresses</label>
+
+                <input type="radio" name="type" id="changetype-geocode">
+                <label for="changetype-geocode">Geocodes</label>
+            </div>
+            <div id="strict-bounds-selector" class="pac-controls">
+                <input type="checkbox" id="use-strict-bounds" value="">
+                <label for="use-strict-bounds">Strict Bounds</label>
+            </div>
+        </div>
+        <div id="pac-container">
+            <input id="pac-input" type="text" placeholder="Enter a location">
+        </div>
+    </div>
+    <div id="map"></div>
+    <div id="infowindow-content">
+        <img src="" width="16" height="16" id="place-icon">
+        <span id="place-name" class="title"></span><br>
+        <span id="place-address"></span>
+      </div>
+    </div>
+  </div>
+  </section>
+ -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span class="copyright">Copyright &copy; Find Your Recipe 2018</span>
+          </div>
+         
+        </div>
+      </div>
+    </footer>
+
+   
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+    <script type="text/javascript" src="macros.js"></script>
+    <script type="text/javascript" src="googleAutocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAki106XKTYF8aN0LBROz8OXWG_19uN-uI&libraries=places&callback=initMap" async defer></script>
+
+  </body>
+
+</html>
